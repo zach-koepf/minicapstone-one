@@ -6,12 +6,14 @@ using System.Text;
 using Capstone.Objects;
 namespace Capstone
 {
-    class Inventory
+    public class Inventory
     {
         // get inventory from csv file
-        public static List<Item> GetInventory()
+        public List<Item> InventoryList { get; set; } = new List<Item>();
+        public Inventory()
+        { }
+        public void GetInventory()
         {
-            List<Item> inventory = new List<Item>();
             string fileName = "vendingmachine.csv";
             string directory = Environment.CurrentDirectory;
             string fullPath = Path.Combine(directory, fileName);
@@ -24,7 +26,7 @@ namespace Capstone
                         string line = sr.ReadLine();
                         List<string> parameters = line.Split('|').ToList();
                         Item newItem = new Item(parameters[0], parameters[1], decimal.Parse(parameters[2]), parameters[3]);
-                        inventory.Add(newItem);
+                        InventoryList.Add(newItem);
                     }
                 }
 
@@ -35,7 +37,6 @@ namespace Capstone
                 Console.WriteLine(e.Message);
                 throw;
             }
-            return inventory;
         }
 
         // soldout method: tells us whether item is sold out

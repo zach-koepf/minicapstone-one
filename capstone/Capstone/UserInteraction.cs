@@ -16,19 +16,40 @@ namespace Capstone
         }
         
         // display items method
-        public void DisplayItems()
+        public void DisplayItems(Inventory inventory)
         {
-
-            List<Item> inventory = Inventory.GetInventory(); // need most recently updated inventory , call current status of existing items
-            foreach (var item in inventory)
+            
+            //List<Item> inventory = Inventory.GetInventory(); // need most recently updated inventory , call current status of existing items
+            foreach (var item in inventory.InventoryList)
             {
-             //   Console.WriteLine($"{inventory.}");
+                if (item.Count != 0)
+                {
+                    Console.WriteLine($"{item.SlotId} {item.Name} {item.Price:c2} remaining: {item.Count}");
+                }
+                else
+                {
+                    Console.WriteLine($"{item.SlotId} {item.Name} {item.Price:c2} remaining: SOLD OUT");
+                }
+                //   Console.WriteLine($"{inventory.}");
             }
 
         }
 
         // Purchase method
-        
+        public void PurchaseMenu(Purchase balance)
+        {
+            Console.WriteLine($"Current Money Provided: {balance.Balance}/n" + //need to fix reference to balance object
+                "/n" +
+                "(1) Feed Money/n" +
+                "(2) Select Product/n" +
+                "(3) Finish Transaction"); 
+        }
+        // feed money
+        public void UserFeedMoney(Purchase purchase)
+        {
+            purchase.FeedMoney();
+        }
+
         // finish transaction method
 
         // hidden sales report method
