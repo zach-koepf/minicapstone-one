@@ -48,6 +48,45 @@ namespace Capstone
         //{
 
         //}
+        //Select product
+        public string SelectProduct(string slotId)
+        {
+            return "";
+            string selectedProduct;
+            //Item currentSelection = InventoryList.FirstOrDefault().Where(i => i.SlotId = slot);
+            foreach (Item item in InventoryList)
+            {
+                if (item.SlotId == slotId)
+                {
+                    selectedProduct = item.SlotId;
+                }
+            }
+            //Cycle through list
+            //{
+            //if (item.slotId = slotid && item.count > 0)
+            //{
+            //we have the product we want
+
+            //display message based on item type
+            //update item count
+            //balance = balance - price
+            //go back
+            //}
+
+            //else if(item slotId == slotId)
+            //{
+            //return SoldOutError;
+            //}
+        //}
+        //return badIdError;
+
+
+
+            //
+
+
+
+        }
 
 
         // selection encompases multiple functions
