@@ -8,7 +8,7 @@ namespace Capstone
     public class UserInteraction
     {
         // Display the main menu
-        public void DisplayMainMenu()
+        public static void DisplayMainMenu()
         {
             Console.WriteLine("(1) Display Vending Machine Items");
             Console.WriteLine("(2) Purchase");

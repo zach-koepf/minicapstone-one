@@ -38,7 +38,7 @@ namespace Capstone
             return inventory;
         }
 
-        // soldout method
+        // soldout method: tells us whether item is sold out
 
         // does it exist?
 
