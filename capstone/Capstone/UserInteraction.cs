@@ -58,7 +58,6 @@ namespace Capstone
         {
             DisplayItems(inventory);
             Console.Write("\nEnter Slot ID: ");
-            //TODO! FIX THIS!!!!!
             //Console.WriteLine($"{Inventory.SelectProduct(Console.ReadLine())}");
             string slotId = Console.ReadLine();
             Item currentSelection = inventory.SelectProduct(slotId.ToUpper());

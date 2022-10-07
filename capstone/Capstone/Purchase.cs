@@ -19,16 +19,19 @@ namespace Capstone
             int wholeDollars = 0;
             try
             {
-                //TODO: Below can result in "System.OverflowException: 'Value was either too large or too small for an Int32.'"
-
-                wholeDollars = int.Parse(dollars);               
-                Balance += wholeDollars;
-                transactionLog.Add($"{DateTime.Now} FEED MONEY: ${wholeDollars}.00 ${Balance}.00");
-                return $"Money fed: ${wholeDollars}.00";
+                wholeDollars = int.Parse(dollars);
+                if (wholeDollars >= 0)
+                {
+                    Balance += wholeDollars;
+                    transactionLog.Add($"{DateTime.Now} FEED MONEY: ${wholeDollars}.00 ${Balance}.00");
+                    return $"Money fed: ${wholeDollars}.00";
+                }
+                else
+                    return "Please provide whole dollars (positive integer).";
             }
             catch (FormatException ex)
             {
-                Console.WriteLine("Please entire whole dollars (integers)");
+                Console.WriteLine("Please provide whole dollars (integers)");
                 return ex.Message;
             }
         }
