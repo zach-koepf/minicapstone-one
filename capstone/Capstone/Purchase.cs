@@ -18,6 +18,8 @@ namespace Capstone
             int wholeDollars = 0;
             try
             {
+                //TODO: Below can result in "System.OverflowException: 'Value was either too large or too small for an Int32.'"
+
                 wholeDollars = int.Parse(dollars);               
                 Balance += wholeDollars;
                 transactionLog.Add($"{DateTime.Now} FEED MONEY: {wholeDollars} {Balance}");

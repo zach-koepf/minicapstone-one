@@ -12,9 +12,7 @@ namespace Capstone.Objects
         { 
             get 
             {
-                string output = "";
-
-                switch (Type)
+                switch (Type.ToLower())
                 {
                     case "chip":
                         return "Crunch Crunch, Yum!";
@@ -25,10 +23,8 @@ namespace Capstone.Objects
                     case "gum":
                         return "Chew Chew, Yum!";
                     default:
-                        break;
+                        return "Error, did not set item.Message Properly. Type did not match candy/chip/drink/gum";
                 }
-
-                return output;
             } 
         }
         public string SlotId { get; set; }
