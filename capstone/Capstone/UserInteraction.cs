@@ -68,23 +68,23 @@ namespace Capstone
                 Console.WriteLine("Error: Item matching that slot ID does not exist");
                 return;
             }
-            if (!inventory.CheckItemInStock(currentSelection))
+            else if (!inventory.CheckItemInStock(currentSelection))
             {
                 Console.WriteLine("Error: Item out of stock");
                 return;
             }
-
+            else if (inventory.CheckItemExist(slotId.ToUpper(), currentSelection) == true && inventory.CheckItemInStock(currentSelection))
+            {
+                purchase.SelectProductToPurchase(currentSelection, purchase);
+                inventory.Dispense(currentSelection, purchase);
+                Console.WriteLine(currentSelection.Message);
+            }
             //we have the product we want
-            //TODO: Link to purchase check balance method            
-            purchase.SelectProductToPurchase(currentSelection, purchase);
-
-            //TODO: Link to purchase buy item method
-
-
+            //Link to purchase check balance method            
+            //Link to purchase buy item method
             //update item count
-            inventory.Dispense(currentSelection, purchase);
             //display message based on item type
-            Console.WriteLine(currentSelection.Message);
+            
         }
 
         public static void FinishTransaction(Purchase purchase)
