@@ -73,6 +73,7 @@ namespace Capstone
                 Console.WriteLine("Error: Item out of stock");
                 return;
             }
+            
 
             //we have the product we want
             //TODO: Link to purchase check balance method            
