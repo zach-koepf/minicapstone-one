@@ -90,7 +90,7 @@ namespace Capstone
 
             Balance = 0.00M;
             transactionLog.Add($"{DateTime.Now} GIVE CHANGE: {startBalance} $0.00");
-            return $"${startBalance} dispensed. {quarters} quarter(s), {dimes} dime(s), {nickels} nickel(s) returned./n Balance is now $0.00";
+            return $"${startBalance} dispensed. {quarters} quarter(s), {dimes} dime(s), {nickels} nickel(s) returned.\n Balance is now $0.00";
         }
 
             // update balance method
