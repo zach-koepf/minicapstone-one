@@ -40,8 +40,26 @@ namespace Capstone
         }
 
         // soldout method: tells us whether item is sold out
-
         // does it exist?
+        public bool CheckItemExist(string slotId, Item currentSelection)
+        {
+            bool doesExist = false;
+            if (currentSelection.SlotId == slotId)
+            {
+                doesExist = true;
+            }
+            return doesExist;
+        }
+        public bool CheckItemInStock(Item currentSelection)
+        {
+            bool inStock = false;
+            if (currentSelection.Count > 0)
+            {
+                inStock = true;
+            }
+            return inStock;
+
+        }
 
         // update count of inventory
         //public int UpdateCount()
@@ -50,45 +68,37 @@ namespace Capstone
         //}
         //Select product
         public string SelectProduct(string slotId)
-        {
-            return "";
-            string selectedProduct;
-            //Item currentSelection = InventoryList.FirstOrDefault().Where(i => i.SlotId = slot);
-            foreach (Item item in InventoryList)
+         {
+            string selectionMessage = "";
+            //Cycle through list and matches the first item in list that has Item.SlotId == slotId parameter. defaults to first item in list if failure
+            Item currentSelection = InventoryList.FirstOrDefault(i => i.SlotId == slotId);
+
+            //Is our item in stock? Is our item actually the right item? 
+            CheckItemExist(slotId, currentSelection);
+            CheckItemInStock(currentSelection);
+
+            if (currentSelection.Count <= 0 || currentSelection.SlotId != slotId)
             {
-                if (item.SlotId == slotId)
-                {
-                    selectedProduct = item.SlotId;
-                }
+                //return "something wrong" message 
+                //#TODO: What should message be?
+                return $"";
             }
-            //Cycle through list
-            //{
-            //if (item.slotId = slotid && item.count > 0)
-            //{
+
+
             //we have the product we want
 
             //display message based on item type
             //update item count
+            Dispense(currentSelection);
             //balance = balance - price
-            //go back
-            //}
+            //TODO: What message string do we return?
+            return selectionMessage;
+         }
 
-            //else if(item slotId == slotId)
-            //{
-            //return SoldOutError;
-            //}
-        //}
-        //return badIdError;
-
-
-
-            //
-
-
-
-        }
-
-
+         public void Dispense(Item currentSelection)
+         {
+            currentSelection.Count--;
+         }
         // selection encompases multiple functions
     }
 }
