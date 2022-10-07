@@ -93,13 +93,8 @@ namespace Capstone
 
         public static void FinishTransaction(Purchase purchase, List<string> transactionLog)
         {
-        
-<<<<<<< HEAD
-            Console.WriteLine(purchase.FinishTransaction());
-=======
+
             Console.WriteLine(purchase.FinishTransaction(transactionLog));
-           
->>>>>>> 51ec3e494f300a4976529a31b0dafc80c437488d
         }
 
         public static void BadInputErrorMessage()
