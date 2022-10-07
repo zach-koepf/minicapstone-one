@@ -47,23 +47,14 @@ namespace Capstone
         // feed money
         public void UserFeedMoney(Purchase purchase)
         {
-            Console.WriteLine($"Provide Money: ");
-            string dollars = Console.ReadLine();
-            purchase.FeedMoney(dollars);
-            
+            purchase.FeedMoney();
         }
 
         // finish transaction method
 
-        public void FinishTransaction(Purchase purchase)
-        {
-        
-            Console.WriteLine(purchase.FinishTransaction());
-            DisplayMainMenu();
-
-        }
-
         // hidden sales report method
+
+        //Exit method
 
     }
 }

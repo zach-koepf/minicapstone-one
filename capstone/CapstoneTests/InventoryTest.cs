@@ -1,13 +1,17 @@
+using Capstone;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CapstoneTests
 {
     [TestClass]
-    public class UnitTest1
+    public class InventoryTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Test()
         {
+            Inventory inventory = new Inventory();
+            
+
         }
     }
 }
