@@ -23,7 +23,7 @@ namespace Capstone
 
                 wholeDollars = int.Parse(dollars);               
                 Balance += wholeDollars;
-                transactionLog.Add($"{DateTime.Now} FEED MONEY: {wholeDollars} {Balance}");
+                transactionLog.Add($"{DateTime.Now} FEED MONEY: ${wholeDollars}.00 ${Balance}.00");
                 return $"Money fed: ${wholeDollars}.00";
             }
             catch (FormatException ex)
@@ -48,7 +48,7 @@ namespace Capstone
             if (CheckBalanceForItem(currentSelection) == true)
             {
                 Balance -= currentSelection.Price;
-                transactionLog.Add($"{DateTime.Now} {currentSelection.Name} {currentSelection.SlotId}: {currentSelection.Price} {Balance}");
+                transactionLog.Add($"{DateTime.Now} {currentSelection.Name} {currentSelection.SlotId}: ${currentSelection.Price} ${Balance}");
                 return "";
 
             }

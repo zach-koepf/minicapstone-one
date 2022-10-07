@@ -50,7 +50,7 @@ namespace Capstone
         public static void UserFeedMoney(Purchase purchase, List<string> transactionLog)
         {
             Console.Write("Please enter whole dollars: ");
-            Console.WriteLine($"{purchase.FeedMoney(Console.ReadLine())}");
+            Console.WriteLine($"{purchase.FeedMoney(Console.ReadLine(), transactionLog)}");
         }
 
         // finish transaction method
@@ -75,7 +75,7 @@ namespace Capstone
             }
             else if (inventory.CheckItemExist(slotId.ToUpper(), currentSelection) == true && inventory.CheckItemInStock(currentSelection))
             {
-                Console.WriteLine(purchase.SelectProductToPurchase(currentSelection, purchase));
+                Console.WriteLine(purchase.SelectProductToPurchase(currentSelection, purchase, transactionLog));
             }
             if (purchase.CheckBalanceForItem(currentSelection))
             {
@@ -94,7 +94,7 @@ namespace Capstone
         public static void FinishTransaction(Purchase purchase, List<string> transactionLog)
         {
         
-            Console.WriteLine(purchase.FinishTransaction());
+            Console.WriteLine(purchase.FinishTransaction(transactionLog));
            
         }
 
