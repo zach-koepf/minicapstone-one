@@ -62,7 +62,7 @@ namespace Capstone
         }
         //Select product, encompases multiple subfunctions
 
-        public string SelectProduct(string slotId)
+        public string SelectProduct(string slotId, Purchase purchase)
         {
             string selectionMessage = "";
             //Cycle through list and matches the first item in list that has Item.SlotId == slotId parameter. defaults to first item in list if failure
@@ -78,7 +78,7 @@ namespace Capstone
                 return "Error: Item out of stock";//TODO: MAKE A MESSAGE FOR ITEM NOT EXISTING!
             }
             //we have the product we want
-
+            purchase.CheckBalanceForItem();
             //display message based on item type
             //update item count
             Dispense(currentSelection);
