@@ -48,7 +48,8 @@ namespace Capstone
             {
                 Balance -= currentSelection.Price;
                 transactionLog.Add($"{DateTime.Now} {currentSelection.Name} {currentSelection.SlotId}: {currentSelection.Price} {Balance}");
-                return currentSelection.Message;
+                return "";
+
             }
             //perform
             //update balance

@@ -75,16 +75,20 @@ namespace Capstone
             }
             else if (inventory.CheckItemExist(slotId.ToUpper(), currentSelection) == true && inventory.CheckItemInStock(currentSelection))
             {
-                purchase.SelectProductToPurchase(currentSelection, purchase);
+                Console.WriteLine(purchase.SelectProductToPurchase(currentSelection, purchase));
+            }
+            if (purchase.CheckBalanceForItem(currentSelection))
+            {
                 inventory.Dispense(currentSelection, purchase);
                 Console.WriteLine(currentSelection.Message);
+
             }
             //we have the product we want
             //Link to purchase check balance method            
             //Link to purchase buy item method
             //update item count
             //display message based on item type
-            
+
         }
 
         public static void FinishTransaction(Purchase purchase)
