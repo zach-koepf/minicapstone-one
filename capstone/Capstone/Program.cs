@@ -47,19 +47,19 @@ namespace Capstone
                         string purchaseMenueOption = Console.ReadLine();
                         if (purchaseMenueOption == "3") //finish transaction menu uption
                         {
-                            UserInteraction.FinishTransaction(purchase);
+                            UserInteraction.FinishTransaction(purchase, transactionLog);
                             purchaseComplete = true;
                             break;
                         }
                         else if (purchaseMenueOption == "1")  // feeds money in, sets balance
                         {
-                            UserInteraction.UserFeedMoney(purchase);
+                            UserInteraction.UserFeedMoney(purchase, transactionLog);
                         }
                         else if (purchaseMenueOption == "2") // purchase process, including item selection
                         {
                             // add select product
                             UserInteraction userInteraction = new UserInteraction();
-                            userInteraction.UserSelectProduct(inventory, purchase);
+                            userInteraction.UserSelectProduct(inventory, purchase, transactionLog);
                         }
                         else
                         {

@@ -6,9 +6,6 @@ using Capstone;
 
 namespace CapstoneTests
 {
-    [TestClass]
-    public class UserInteractionTest
-    {
 
-    }
+  
 }

@@ -10,10 +10,11 @@ namespace Capstone
         // Price property?
         //public decimal Price { get; }
         // Balance property
-        public List<string> transactionLog = new List<string>();
+        public List<string> TransactionLog { get; set; } = new List<string>();
         public decimal Balance { get; private set; } = 0;
+
         // Feed Money method
-        public string FeedMoney(string dollars)
+        public string FeedMoney(string dollars, List<string> transactionLog)
         {
             int wholeDollars = 0;
             try
@@ -22,7 +23,7 @@ namespace Capstone
 
                 wholeDollars = int.Parse(dollars);               
                 Balance += wholeDollars;
-                transactionLog.Add($"{DateTime.Now} FEED MONEY: {wholeDollars} {Balance}");
+                transactionLog.Add($"{DateTime.Now} FEED MONEY: ${wholeDollars}.00 ${Balance}.00");
                 return $"Money fed: ${wholeDollars}.00";
             }
             catch (FormatException ex)
@@ -41,13 +42,13 @@ namespace Capstone
                 return true;
             return false;
         }
-        public string SelectProductToPurchase(Item currentSelection, Purchase purchase)
+        public string SelectProductToPurchase(Item currentSelection, Purchase purchase, List<string> transactionLog)
         {
             // if CheckBalanceForItem() == true
             if (CheckBalanceForItem(currentSelection) == true)
             {
                 Balance -= currentSelection.Price;
-                transactionLog.Add($"{DateTime.Now} {currentSelection.Name} {currentSelection.SlotId}: {currentSelection.Price} {Balance}");
+                transactionLog.Add($"{DateTime.Now} {currentSelection.Name} {currentSelection.SlotId}: ${currentSelection.Price} ${Balance}");
                 return "";
 
             }
@@ -61,7 +62,7 @@ namespace Capstone
             }
 
         }
-        public string FinishTransaction()
+        public string FinishTransaction(List<string> transactionLog)
         {
             decimal cents = Balance * 100;
             int quarters = 0;
@@ -89,8 +90,8 @@ namespace Capstone
             }
 
             Balance = 0.00M;
-            transactionLog.Add($"{DateTime.Now} GIVE CHANGE: {startBalance} $0.00");
-            return $"${startBalance} dispensed. {quarters} quarter(s), {dimes} dime(s), {nickels} nickel(s) returned./n Balance is now $0.00";
+            transactionLog.Add($"{DateTime.Now} GIVE CHANGE: ${startBalance} $0.00");
+            return $"${startBalance} dispensed. {quarters} quarter(s), {dimes} dime(s), {nickels} nickel(s) returned.\nBalance is now $0.00";
         }
 
             // update balance method

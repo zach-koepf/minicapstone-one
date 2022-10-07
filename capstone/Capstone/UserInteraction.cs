@@ -47,14 +47,14 @@ namespace Capstone
                 "(3) Finish Transaction\n"); 
         }
         // feed money
-        public static void UserFeedMoney(Purchase purchase)
+        public static void UserFeedMoney(Purchase purchase, List<string> transactionLog)
         {
             Console.Write("Please enter whole dollars: ");
-            Console.WriteLine($"{purchase.FeedMoney(Console.ReadLine())}");
+            Console.WriteLine($"{purchase.FeedMoney(Console.ReadLine(), transactionLog)}");
         }
 
         // finish transaction method
-        public void UserSelectProduct(Inventory inventory, Purchase purchase)
+        public void UserSelectProduct(Inventory inventory, Purchase purchase, List<string> transactionLog)
         {
             DisplayItems(inventory);
             Console.Write("\nEnter Slot ID: ");
@@ -75,7 +75,7 @@ namespace Capstone
             }
             else if (inventory.CheckItemExist(slotId.ToUpper(), currentSelection) == true && inventory.CheckItemInStock(currentSelection))
             {
-                Console.WriteLine(purchase.SelectProductToPurchase(currentSelection, purchase));
+                Console.WriteLine(purchase.SelectProductToPurchase(currentSelection, purchase, transactionLog));
             }
             if (purchase.CheckBalanceForItem(currentSelection))
             {
@@ -91,10 +91,15 @@ namespace Capstone
 
         }
 
-        public static void FinishTransaction(Purchase purchase)
+        public static void FinishTransaction(Purchase purchase, List<string> transactionLog)
         {
         
+<<<<<<< HEAD
             Console.WriteLine(purchase.FinishTransaction());
+=======
+            Console.WriteLine(purchase.FinishTransaction(transactionLog));
+           
+>>>>>>> 51ec3e494f300a4976529a31b0dafc80c437488d
         }
 
         public static void BadInputErrorMessage()
