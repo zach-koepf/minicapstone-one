@@ -69,9 +69,10 @@ namespace Capstone
          }
 
         // update count of inventory
-        public void Dispense(Item currentSelection)
+        public void Dispense(Item currentSelection, Purchase purchase)
          {
-            currentSelection.Count--;
+            if (purchase.CheckBalanceForItem(currentSelection))
+                currentSelection.Count--;
          }
     }
 }

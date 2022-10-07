@@ -82,7 +82,7 @@ namespace Capstone
 
 
             //update item count
-            inventory.Dispense(currentSelection);
+            inventory.Dispense(currentSelection, purchase);
             //display message based on item type
             Console.WriteLine(currentSelection.Message);
         }
