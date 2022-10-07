@@ -1,6 +1,7 @@
 ﻿using System;
 using Capstone.Objects;
 using Capstone;
+using System.Collections.Generic;
 
 namespace Capstone
 {
@@ -13,6 +14,8 @@ namespace Capstone
             bool isDone = false;
             Inventory inventory = new Inventory();
             inventory.GetInventory();
+            List<string> transactionLog = new List<string>();
+
 
             Purchase purchase = new Purchase();
             while (isDone == false)
@@ -27,6 +30,7 @@ namespace Capstone
                 if (menuOption == "3")  //Exit program selection
                 {
                     isDone = true;
+                    Logger.WriteFile(transactionLog);
                     break;
                 }
                 else if (menuOption == "1")     //displays list of items
