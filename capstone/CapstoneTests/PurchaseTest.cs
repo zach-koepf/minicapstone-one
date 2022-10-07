@@ -2,6 +2,7 @@
 using Capstone;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Capstone.Objects;
+using System.Collections.Generic;
 
 namespace CapstoneTests
 {
@@ -15,9 +16,9 @@ namespace CapstoneTests
 
             string firstInput = "5";
 
-            string actualResult = purchase.FeedMoney(firstInput);
+            string actualResult = purchase.FeedMoney(firstInput, new List<string>());
             int result = 5;
-            string expectedResult =$"Money fed: {result}";
+            string expectedResult =$"Money fed: {result:c2}";
 
             Assert.AreEqual(expectedResult, actualResult);
 
@@ -28,10 +29,10 @@ namespace CapstoneTests
         {
             Purchase purchase = new Purchase();
 
-            purchase.FeedMoney("1");
-            string actualResult = purchase.FinishTransaction();
+            purchase.FeedMoney("1", new List<string>());
+            string actualResult = purchase.FinishTransaction(new List<string>());
 
-            string expectedResult = $"$1.00 dispensed. 4 quarter(s), 0 dime(s), 0 nickel(s) returned./n Balance is now $0.00";
+            string expectedResult = $"$1.00 dispensed. 4 quarter(s), 0 dime(s), 0 nickel(s) returned.\nBalance is now $0.00";
 
             Assert.AreEqual(expectedResult, actualResult);
 
@@ -48,17 +49,17 @@ namespace CapstoneTests
         {
             Purchase purchase = new Purchase();
             Item item = new Item("A3", "chips", 5.00M, "chip");
-            purchase.FeedMoney("5");
-            string expectedResult = "Crunch Crunch, Yum!";
-            string actualResult = purchase.SelectProductToPurchase(item, purchase);
+            purchase.FeedMoney("5", new List<string>());
+            string expectedResult = "";
+            string actualResult = purchase.SelectProductToPurchase(item, purchase, new List<string>());
             Assert.AreEqual(expectedResult, actualResult);
 
             
             
             Item item1 = new Item("A3", "chips", 5.00M, "chip");
-            purchase.FeedMoney("2");
+            purchase.FeedMoney("2", new List<string>());
             string expectedResult1 = "Balance Insufficient for purchase.";
-            string actualResult1 = purchase.SelectProductToPurchase(item1, purchase);
+            string actualResult1 = purchase.SelectProductToPurchase(item1, purchase, new List<string>());
             Assert.AreEqual(expectedResult1, actualResult1);
 
 
@@ -79,7 +80,7 @@ namespace CapstoneTests
             Assert.AreEqual(expectedResult, actualResult);
 
             Item item1 = new Item("A3", "chips", 5.00M, "chip");
-            purchase.FeedMoney("5");
+            purchase.FeedMoney("5", new List<string>());
 
             bool expectedResult1 = true;
 
