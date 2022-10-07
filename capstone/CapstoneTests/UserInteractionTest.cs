@@ -7,7 +7,7 @@ using Capstone;
 namespace CapstoneTests
 {
     [TestClass]
-    class UserInteractionTest
+    public class UserInteractionTest
     {
 
     }

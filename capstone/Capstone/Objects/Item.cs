@@ -18,16 +18,12 @@ namespace Capstone.Objects
                 {
                     case "chip":
                         return "Crunch Crunch, Yum!";
-                        break;
                     case "candy":
                         return "Munch Munch, Yum!";
-                        break;
                     case "drink":
                         return "Glug Glug, Yum!";
-                        break;
                     case "gum":
                         return "Chew Chew, Yum!";
-                        break;
                     default:
                         break;
                 }

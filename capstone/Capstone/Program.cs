@@ -17,12 +17,12 @@ namespace Capstone
             Purchase purchase = new Purchase();
             while (isDone == false)
             {
-            // display main menu
+                // display main menu
 
-            UserInteraction.DisplayMainMenu();
+                UserInteraction.DisplayMainMenu();
                 
-            // read line from user
-            string menuOption = Console.ReadLine();
+                // read line from user
+                string menuOption = Console.ReadLine();
 
                 if (menuOption == "3")  //Exit program selection
                 {
@@ -35,12 +35,12 @@ namespace Capstone
                 }
                 else if (menuOption == "2")     //enters purchase menu loop
                 {
-                    string purchaseMenueOption = Console.ReadLine();
                     bool purchaseComplete = false;
 
-                    UserInteraction.PurchaseMenu(purchase);
                     while (purchaseComplete == false)
                     {
+                        UserInteraction.PurchaseMenu(purchase);
+                        string purchaseMenueOption = Console.ReadLine();
                         if (purchaseMenueOption == "3") //finish transaction menu uption
                         {
                             UserInteraction.FinishTransaction(purchase);
@@ -54,6 +54,8 @@ namespace Capstone
                         else if (purchaseMenueOption == "2") // purchase process, including item selection
                         {
                             // add select product
+                            UserInteraction userInteraction = new UserInteraction();
+                            userInteraction.UserSelectProduct(inventory, purchase);
                         }
                         else
                         {

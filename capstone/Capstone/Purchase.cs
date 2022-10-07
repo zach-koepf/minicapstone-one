@@ -31,10 +31,28 @@ namespace Capstone
         }
         // select product method (string slotID & Purchase purchase)
         //need method to call in inventory select product method. method here solely deals with money transaction? & logging
-        //public string SelectProductToPurchase(Item currentSelection, Purchase purchase)
-        //{
-
-        //}
+        public bool CheckBalanceForItem(Item currentSelection)
+        {
+            // get current balance
+            // if balance >= item.price
+            if (Balance >= currentSelection.Price)
+                return true;
+            return false;
+        }
+        public string SelectProductToPurchase(Item currentSelection, Purchase purchase)
+        {
+            // if CheckBalanceForItem() == true
+            if (CheckBalanceForItem(currentSelection))
+            {
+                Balance -= currentSelection.Price;
+                return currentSelection.Message;
+            }
+            //perform
+            //update balance
+            // else
+            // no purchase; same balance
+            return "Balance Insufficient for purchase.";
+        }
         public string FinishTransaction()
         {
             decimal cents = Balance * 100;
@@ -46,25 +64,25 @@ namespace Capstone
             while (cents >= 25)
             {
                 quarters++;
-                startBalance += 25;
+                startBalance += 0.25M;
                 cents = cents - 25;
             }
             while (cents>= 10)
             {
                 dimes++;
-                startBalance += 10;
+                startBalance += 0.10M;
                 cents = cents - 10;
             }
             while (cents >= 5)
             {
                 nickels++;
-                startBalance += 5;
+                startBalance += 0.05M;
                 cents = cents - 5;
             }
 
             Balance = 0.00M;
             transactionLog.Add($"{DateTime.Now} GIVE CHANGE: {startBalance} $0.00");
-            return $"{startBalance} dispensed. {quarters} quarter(s), {dimes} dime(s), {nickels} nickel(s) returned./n Balance is now $0.00";
+            return $"${startBalance} dispensed. {quarters} quarter(s), {dimes} dime(s), {nickels} nickel(s) returned./n Balance is now $0.00";
         }
 
             // update balance method
