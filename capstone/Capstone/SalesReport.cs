@@ -12,7 +12,7 @@ namespace Capstone
         public static void SalesReport (Inventory inventory)
         {
             string directory = Environment.CurrentDirectory + @"\..\..\..\..\";
-            string fileName = "SalesReport.CSV";
+            string fileName = $"{DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")}_SalesReport.CSV";
             string fullPath = Path.Combine(directory, fileName);
 
             using (StreamWriter sw = new StreamWriter(fullPath))

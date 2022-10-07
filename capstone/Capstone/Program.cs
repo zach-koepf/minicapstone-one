@@ -31,8 +31,11 @@ namespace Capstone
                 {
                     isDone = true;
                     Logger.WriteFile(transactionLog);
-                    SalesReporting.SalesReport(inventory);
                     break;
+                }
+                else if (menuOption == "4")
+                {
+                    SalesReporting.SalesReport(inventory);
                 }
                 else if (menuOption == "1")     //displays list of items
                 {
