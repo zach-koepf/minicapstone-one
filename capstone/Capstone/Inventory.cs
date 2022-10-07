@@ -44,7 +44,7 @@ namespace Capstone
         public bool CheckItemExist(string slotId, Item currentSelection)
         {
             bool doesExist = false;
-            if (currentSelection.SlotId == slotId)
+            if (currentSelection.SlotId.ToLower() == slotId.ToLower())
             {
                 doesExist = true;
             }

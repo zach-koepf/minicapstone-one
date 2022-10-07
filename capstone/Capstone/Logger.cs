@@ -23,7 +23,7 @@ namespace Capstone
         public static void WriteFile(List<string> transactionLog)
         {
             //find location for file writing
-            string directory = Environment.CurrentDirectory;
+            string directory = Environment.CurrentDirectory + @"\..\..\..\..\";
             string fileName = "Log.txt";
             string fullPath = Path.Combine(directory, fileName);
             try
