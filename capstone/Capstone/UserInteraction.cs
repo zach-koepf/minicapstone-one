@@ -95,7 +95,6 @@ namespace Capstone
         {
         
             Console.WriteLine(purchase.FinishTransaction());
-           
         }
 
         public static void BadInputErrorMessage()
