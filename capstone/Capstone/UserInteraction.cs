@@ -49,8 +49,8 @@ namespace Capstone
         // feed money
         public static void UserFeedMoney(Purchase purchase)
         {
-            Console.WriteLine("Please enter whole dollars.");
-            Console.WriteLine(purchase.FeedMoney(Console.ReadLine()));
+            Console.Write("Please enter whole dollars: ");
+            Console.WriteLine($"{purchase.FeedMoney(Console.ReadLine())}");
         }
 
         // finish transaction method
@@ -75,16 +75,20 @@ namespace Capstone
             }
             else if (inventory.CheckItemExist(slotId.ToUpper(), currentSelection) == true && inventory.CheckItemInStock(currentSelection))
             {
-                purchase.SelectProductToPurchase(currentSelection, purchase);
+                Console.WriteLine(purchase.SelectProductToPurchase(currentSelection, purchase));
+            }
+            if (purchase.CheckBalanceForItem(currentSelection))
+            {
                 inventory.Dispense(currentSelection, purchase);
                 Console.WriteLine(currentSelection.Message);
+
             }
             //we have the product we want
             //Link to purchase check balance method            
             //Link to purchase buy item method
             //update item count
             //display message based on item type
-            
+
         }
 
         public static void FinishTransaction(Purchase purchase)
@@ -96,7 +100,7 @@ namespace Capstone
 
         public static void BadInputErrorMessage()
         {
-            Console.WriteLine("Invalid entry. Please enter 1, 2, or 3./n");
+            Console.WriteLine("Invalid entry. Please enter 1, 2, or 3.\n");
         }
         // hidden sales report method
 
