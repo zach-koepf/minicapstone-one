@@ -36,7 +36,6 @@ namespace Capstone
                 else if (menuOption == "2")     //enters purchase menu loop
                 {
                     bool purchaseComplete = false;
-
                     while (purchaseComplete == false)
                     {
                         UserInteraction.PurchaseMenu(purchase);
@@ -45,7 +44,7 @@ namespace Capstone
                         {
                             UserInteraction.FinishTransaction(purchase);
                             purchaseComplete = true;
-                            break;
+                           
                         }
                         else if (purchaseMenueOption == "1")  // feeds money in, sets balance
                         {
@@ -61,6 +60,7 @@ namespace Capstone
                         {
                             UserInteraction.BadInputErrorMessage();
                         }
+                        break;
                     }
                 }
                 else
