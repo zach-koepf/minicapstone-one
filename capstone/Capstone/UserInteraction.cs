@@ -63,7 +63,10 @@ namespace Capstone
 
         }
 
-        // public 
+        public static void BadInputErrorMessage()
+        {
+            Console.WriteLine("Invalid entry. Please enter 1, 2, or 3./n");
+        }
         // hidden sales report method
 
     }

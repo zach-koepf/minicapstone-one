@@ -57,20 +57,20 @@ namespace Capstone
                         }
                         else
                         {
-                            Console.WriteLine("Invalid entry. Please enter 1, 2, or 3./n");
+                            UserInteraction.BadInputErrorMessage();
                         }
                     }
                 }
                 else
                 {
-                    Console.WriteLine ("Invalid entry. Please enter 1, 2, or 3./n");
+                    UserInteraction.BadInputErrorMessage();
                 }
-            // try-catch parse from string to int
-            // if correct input & number is 1 display main menu
-            //                  number = 2 go to purchase process menu
-            //                  number =3 finish transaction
-            //if incorrection input display format exception
-            // do different things based on numbers 
+                // try-catch parse from string to int
+                // if correct input & number is 1 display main menu
+                //                  number = 2 go to purchase process menu
+                //                  number =3 finish transaction
+                //if incorrection input display format exception
+                // do different things based on numbers 
             }
            
         }
