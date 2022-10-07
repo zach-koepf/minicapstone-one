@@ -44,7 +44,7 @@ namespace Capstone
                         {
                             UserInteraction.FinishTransaction(purchase);
                             purchaseComplete = true;
-                           
+                            break;
                         }
                         else if (purchaseMenueOption == "1")  // feeds money in, sets balance
                         {
@@ -60,7 +60,7 @@ namespace Capstone
                         {
                             UserInteraction.BadInputErrorMessage();
                         }
-                        break;
+                        
                     }
                 }
                 else

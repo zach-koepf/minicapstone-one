@@ -49,8 +49,8 @@ namespace Capstone
         // feed money
         public static void UserFeedMoney(Purchase purchase)
         {
-            Console.WriteLine("Please enter whole dollars.");
-            Console.WriteLine(purchase.FeedMoney(Console.ReadLine()));
+            Console.Write("Please enter whole dollars: ");
+            Console.WriteLine($"{purchase.FeedMoney(Console.ReadLine())}");
         }
 
         // finish transaction method
@@ -100,7 +100,7 @@ namespace Capstone
 
         public static void BadInputErrorMessage()
         {
-            Console.WriteLine("Invalid entry. Please enter 1, 2, or 3./n");
+            Console.WriteLine("Invalid entry. Please enter 1, 2, or 3.\n");
         }
         // hidden sales report method
 

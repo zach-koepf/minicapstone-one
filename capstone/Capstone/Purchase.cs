@@ -23,7 +23,7 @@ namespace Capstone
                 wholeDollars = int.Parse(dollars);               
                 Balance += wholeDollars;
                 transactionLog.Add($"{DateTime.Now} FEED MONEY: {wholeDollars} {Balance}");
-                return $"Money fed: {wholeDollars}";
+                return $"Money fed: ${wholeDollars}.00";
             }
             catch (FormatException ex)
             {
