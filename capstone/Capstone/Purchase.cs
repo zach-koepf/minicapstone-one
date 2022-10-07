@@ -42,16 +42,21 @@ namespace Capstone
         public string SelectProductToPurchase(Item currentSelection, Purchase purchase)
         {
             // if CheckBalanceForItem() == true
-            if (CheckBalanceForItem(currentSelection))
+            if (CheckBalanceForItem(currentSelection) == true)
             {
                 Balance -= currentSelection.Price;
+                transactionLog.Add($"{DateTime.Now} {currentSelection.Name} {currentSelection.SlotId}: {currentSelection.Price} {Balance}");
                 return currentSelection.Message;
             }
             //perform
             //update balance
             // else
             // no purchase; same balance
-            return "Balance Insufficient for purchase.";
+            else
+            {
+                return "Balance Insufficient for purchase.";
+            }
+
         }
         public string FinishTransaction()
         {
