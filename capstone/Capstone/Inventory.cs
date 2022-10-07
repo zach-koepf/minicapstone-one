@@ -60,45 +60,36 @@ namespace Capstone
             return inStock;
 
         }
+        //Select product, encompases multiple subfunctions
 
-        // update count of inventory
-        //public int UpdateCount()
-        //{
-
-        //}
-        //Select product
-        public string SelectProduct(string slotId)
-         {
+        public string SelectProduct(string slotId, Purchase purchase)
+        {
             string selectionMessage = "";
             //Cycle through list and matches the first item in list that has Item.SlotId == slotId parameter. defaults to first item in list if failure
             Item currentSelection = InventoryList.FirstOrDefault(i => i.SlotId == slotId);
 
             //Is our item in stock? Is our item actually the right item? 
-            CheckItemExist(slotId, currentSelection);
-            CheckItemInStock(currentSelection);
-
-            if (currentSelection.Count <= 0 || currentSelection.SlotId != slotId)
+            if (CheckItemExist(slotId, currentSelection) == false)
             {
-                //return "something wrong" message 
-                //#TODO: What should message be?
-                return $"";
+                return "Error: Item matching that slot ID does not exist";//TODO: MAKE A MESSAGE FOR ITEM NOT EXISTING!
             }
-
-
+            if (CheckItemInStock(currentSelection))
+            { 
+                return "Error: Item out of stock";//TODO: MAKE A MESSAGE FOR ITEM NOT EXISTING!
+            }
             //we have the product we want
-
+            purchase.CheckBalanceForItem();
             //display message based on item type
             //update item count
             Dispense(currentSelection);
             //balance = balance - price
-            //TODO: What message string do we return?
-            return selectionMessage;
+            return currentSelection.Message;
          }
 
-         public void Dispense(Item currentSelection)
+        // update count of inventory
+        public void Dispense(Item currentSelection)
          {
             currentSelection.Count--;
          }
-        // selection encompases multiple functions
     }
 }
