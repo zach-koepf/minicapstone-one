@@ -47,14 +47,14 @@ namespace Capstone
                 "(3) Finish Transaction\n"); 
         }
         // feed money
-        public static void UserFeedMoney(Purchase purchase)
+        public static void UserFeedMoney(Purchase purchase, List<string> transactionLog)
         {
             Console.Write("Please enter whole dollars: ");
             Console.WriteLine($"{purchase.FeedMoney(Console.ReadLine())}");
         }
 
         // finish transaction method
-        public void UserSelectProduct(Inventory inventory, Purchase purchase)
+        public void UserSelectProduct(Inventory inventory, Purchase purchase, List<string> transactionLog)
         {
             DisplayItems(inventory);
             Console.Write("\nEnter Slot ID: ");
@@ -91,7 +91,7 @@ namespace Capstone
 
         }
 
-        public static void FinishTransaction(Purchase purchase)
+        public static void FinishTransaction(Purchase purchase, List<string> transactionLog)
         {
         
             Console.WriteLine(purchase.FinishTransaction());
